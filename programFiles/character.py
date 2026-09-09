@@ -29,4 +29,9 @@ class character:
     def getSkill(self):
         return self.skill
 
+    def takeDamage(self, amount):
+        self.health -= amount
+        if self.health < 0:
+            self.health = 0
+
 

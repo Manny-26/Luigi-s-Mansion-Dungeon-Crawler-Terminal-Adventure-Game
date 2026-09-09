@@ -4,19 +4,12 @@
 # The luigi class adds an inventory to the character class that allows luigi to obtain/store items.
 # The inventory is a dictionary that contains two dictionaries: one for hearts and one for armor.
 
-import item, character
+import item, character, random
 
-SMALL_HEART_HEALTH = 25
-LARGE_HEART_HEALTH = 100
-
-VACUUM_BASE_DAMAGE = 15
-
-SMALL_ARMOR_VALUE = 1
-LARGE_ARMOR_VALUE = 3
-
+MAX_HEALTH = 100
+MAX_ARMOR_SLOTS = 3
 ITEM_ARRAY_SIZE = 3
-
-
+VACUUM_BASE_DAMAGE = 15
 
 # This class represents the main character in the game.
 # This class extends the character class.
@@ -39,8 +32,40 @@ class luigi(character):
                         }
         self.armor = 0
 
-    def addToInventory(self, item):
-        luigi_funcs.placeInSlot(self, item)
+    @property
+    def health(self):
+        return self._health
+ 
+    @health.setter
+    def health(self, value):
+        if value > MAX_HEALTH:
+            self._health = MAX_HEALTH
+        elif value < 0:
+            self._health = 0
+        else:
+            self._health = value
+
+
+        def addToInventory(self, item):
+            slotMap = {
+                "smallHeart": self.inventory["hearts"]["smallHearts"],
+                "largeHeart": self.inventory["hearts"]["largeHearts"],
+                "smallArmor": self.inventory["armor"]["smallArmor"],
+                "largeArmor": self.inventory["armor"]["largeArmor"]
+            }
+    
+            if item.itemType not in slotMap:
+                print("Item type not recognized. Item not added to inventory.")
+                return
+    
+            slots = slotMap[item.itemType]
+            for i in range(len(slots)):
+                if slots[i] is None:
+                    slots[i] = item
+                    print(f"{item.name} added to slot {i + 1}!")
+                    return
+            else:
+                print(f"No empty slots available for {item.name}.")
 
     def getInventory(self):
         print("Inventory:")
@@ -59,21 +84,23 @@ class luigi(character):
             self.health = 100
 
     def takeDamage(self, amount):
-        self.health = self.health - amount
-        if self.health < 0:
-            # TO-DO: Investigate if we can tie health to the game state
-            # (i.e. if health is zero, then the game ends.)
-            self.health = 0
+        if self.armor > 0:
+            self.armor -= 1
+            print(f"Armor absorbed the hit! ({self.armor}/{MAX_ARMOR_SLOTS} slots remaining)")
+        else:
+            self.health -= amount
 
     def vacuumAttack(self, enemy):
-        ...# TO-DO: Implement vacuum attack functionality here
-
-    def useItem(self, item):
-        if (item.type == "heart"):
-            self.addHealth(item.value)
-        elif (item.type == "armor"):
-            self.armor = self.armor + item.value
-
+        print(f"something")
+        instantCatch = random.randint(1,20)
+        if instantCatch == 1:
+            enemy.health = 0
+            print("perfect catch")
+        else:
+            damage = VACUUM_BASE_DAMAGE + self.skill * random.randint(1, 3)
+            #TO-DO print damage message and enemy takes damage at same time
+            enemy.takeDamage (damage)
+        
     def placeInSlot(luigi, item):
         if item.itemType == "smallHeart":
             for i in range(len(luigi.inventory["hearts"]["smallHearts"])):
@@ -107,7 +134,38 @@ class luigi(character):
         else:
             print("Invalid item type.")
 
-    # TO-DO: Implement functions that use the item from the inventory and add to the attributes on luigi
+    def useItem(self):
+        self.getInventory()
+        choice = input(
+            "Choose an item to use:\n"
+            "1) Small Heart\n"
+            "2) Large Heart\n"
+            "3) Small Armor\n"
+            "4) Large Armor\n"
+            "> "
+        )
+ 
+        slotMap = {
+            "1": self.inventory["hearts"]["smallHearts"],
+            "2": self.inventory["hearts"]["largeHearts"],
+            "3": self.inventory["armor"]["smallArmor"],
+            "4": self.inventory["armor"]["largeArmor"]
+        }
+ 
+        if choice not in slotMap:
+            print("Invalid choice. Please try again.")
+            return
+ 
+        slots = slotMap[choice]
+        for i in range(len(slots)):
+            if slots[i] is not None:
+                item = slots[i]
+                slots[i] = None    
+                item.use(self)
+                return
+        else:
+            print("No items of that type in inventory.")
+ 
 
     
     
