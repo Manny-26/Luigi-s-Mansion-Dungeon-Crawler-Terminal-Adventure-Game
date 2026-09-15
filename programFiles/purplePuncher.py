@@ -12,12 +12,12 @@ class purplePuncher(ghost):
     def __init__(self):
         super().__init__("Purple Puncher", 50, 2, 2)
 
-    def softPunch(self, luigi):
+    def softPunch(self, player):
         damage = PURPLE_PUNCHER_BASE_DAMAGE + self.skill * random.randint(1, 3)
-        luigi.takeDamage(damage)
-        print(f"{self.name} punches {luigi.name} for {damage} damage!")
+        player.takeDamage(damage)
+        print(f"{self.name} punches {player.name} for {damage} damage!")
 
-    def hardPunch(self, luigi):
+    def hardPunch(self, player):
         damage = PURPLE_PUNCHER_BASE_DAMAGE + self.skill * random.randint(5, 10)
-        luigi.takeDamage(damage)
-        print(f"{self.name} lands a left hook onto {luigi.name} for {damage} damage! It's extra painful!")
+        player.takeDamage(damage)
+        print(f"{self.name} lands a left hook onto {player.name} for {damage} damage! It's extra painful!")

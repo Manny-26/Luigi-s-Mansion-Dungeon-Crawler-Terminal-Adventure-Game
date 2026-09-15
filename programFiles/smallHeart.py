@@ -9,6 +9,6 @@ class smallHeart(item):
     def __init__(self):
         super().__init__("Small Heart", "This is a small heart. It heals 25 health.", "smallHeart", SMALL_HEART_HEALTH)
 
-    def use(self, luigi):
-        luigi.health += self.magnitude
+    def use(self, player):
+        player.health += self.magnitude
         print(f"Used {self.name}! Restored {self.magnitude} health.")
