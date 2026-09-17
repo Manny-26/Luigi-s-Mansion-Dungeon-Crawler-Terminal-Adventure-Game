@@ -1,0 +1,458 @@
+{
+    "version": 1,
+    "saves": [
+        {
+            "save_id": 1,
+            "character": "Luigi",
+            "level": 1,
+            "created_at": "2026-09-17T17:13:32+00:00",
+            "updated_at": "2026-09-17T17:18:07+00:00",
+            "game": {
+                "__type__": "game",
+                "attributes": {
+                    "state": "EXPLORATION",
+                    "isRunning": true,
+                    "player": {
+                        "__type__": "luigi",
+                        "attributes": {
+                            "name": "Luigi",
+                            "health": 39,
+                            "skill": 1,
+                            "inventory": {
+                                "hearts": {
+                                    "smallHearts": [
+                                        null,
+                                        null,
+                                        null
+                                    ],
+                                    "largeHearts": [
+                                        null,
+                                        null,
+                                        null
+                                    ]
+                                },
+                                "armor": {
+                                    "smallArmor": [
+                                        null,
+                                        null,
+                                        null
+                                    ],
+                                    "largeArmor": [
+                                        null,
+                                        null,
+                                        null
+                                    ]
+                                }
+                            },
+                            "armor": 0
+                        }
+                    },
+                    "currentLevelNumber": 1,
+                    "currentLevel": {
+                        "__type__": "level",
+                        "attributes": {
+                            "levelName": "First Floor",
+                            "rooms": {
+                                "Foyer": {
+                                    "__type__": "room",
+                                    "attributes": {
+                                        "roomName": "Foyer",
+                                        "floor": 1,
+                                        "darkDescription": "The foyer is dark and unsettling.",
+                                        "litDescription": "The foyer is brightly lit and safe. Looks a bit dated, but also timeless at the same time. Tons of Spiderwebs though...",
+                                        "interactableObjects": {
+                                            "mirror": {
+                                                "isSearched": true,
+                                                "outcome": null
+                                            },
+                                            "table stand": {
+                                                "isSearched": true,
+                                                "outcome": null
+                                            },
+                                            "wooden chair": {
+                                                "isSearched": true,
+                                                "outcome": null
+                                            }
+                                        },
+                                        "isCleared": true
+                                    }
+                                },
+                                "Library": {
+                                    "__type__": "room",
+                                    "attributes": {
+                                        "roomName": "Library",
+                                        "floor": 1,
+                                        "darkDescription": "The library is dark and unsettling.",
+                                        "litDescription": "The library is brightly lit and safe. The bookshelves are on the brink of breaking.",
+                                        "interactableObjects": {
+                                            "recliner": {
+                                                "isSearched": false,
+                                                "outcome": null
+                                            },
+                                            "coffee table": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "purplePuncher",
+                                                    "attributes": {
+                                                        "name": "Purple Puncher",
+                                                        "health": 50,
+                                                        "skill": 2,
+                                                        "numAttacks": 2
+                                                    }
+                                                }
+                                            },
+                                            "desk": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "smallArmor",
+                                                    "attributes": {
+                                                        "name": "Small Armor",
+                                                        "description": "Halves damage from the next 3 ghost attacks.",
+                                                        "itemType": "smallArmor",
+                                                        "magnitude": 1,
+                                                        "durability": 3
+                                                    }
+                                                }
+                                            },
+                                            "small bookshelf": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "purplePuncher",
+                                                    "attributes": {
+                                                        "name": "Purple Puncher",
+                                                        "health": 50,
+                                                        "skill": 2,
+                                                        "numAttacks": 2
+                                                    }
+                                                }
+                                            },
+                                            "large bookshelf": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "goldGhost",
+                                                    "attributes": {
+                                                        "name": "Gold Ghost",
+                                                        "health": 30,
+                                                        "skill": 1,
+                                                        "numAttacks": 1
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "isCleared": false
+                                    }
+                                },
+                                "Master Bedroom": {
+                                    "__type__": "room",
+                                    "attributes": {
+                                        "roomName": "Master Bedroom",
+                                        "floor": 1,
+                                        "darkDescription": "The master bedroom is dark and unsettling.",
+                                        "litDescription": "The master bedroom is brightly lit and safe.",
+                                        "interactableObjects": {
+                                            "bed": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "largeHeart",
+                                                    "attributes": {
+                                                        "name": "Large Heart",
+                                                        "description": "This is a large heart. It heals 100 health.",
+                                                        "itemType": "largeHeart",
+                                                        "magnitude": 100
+                                                    }
+                                                }
+                                            },
+                                            "dresser": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "smallHeart",
+                                                    "attributes": {
+                                                        "name": "Small Heart",
+                                                        "description": "This is a small heart. It heals 25 health.",
+                                                        "itemType": "smallHeart",
+                                                        "magnitude": 25
+                                                    }
+                                                }
+                                            },
+                                            "makeup stand": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "largeHeart",
+                                                    "attributes": {
+                                                        "name": "Large Heart",
+                                                        "description": "This is a large heart. It heals 100 health.",
+                                                        "itemType": "largeHeart",
+                                                        "magnitude": 100
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "isCleared": false
+                                    }
+                                },
+                                "Kitchen & Dining Room": {
+                                    "__type__": "room",
+                                    "attributes": {
+                                        "roomName": "Kitchen & Dining Room",
+                                        "floor": 1,
+                                        "darkDescription": "The kitchen and dining room are dark and unsettling.",
+                                        "litDescription": "The kitchen and dining room are brightly lit and safe. There is a rotten potato smashed on the ground...And you stepped in it!!!!!",
+                                        "interactableObjects": {
+                                            "stool 1": {
+                                                "isSearched": false,
+                                                "outcome": null
+                                            },
+                                            "stool 2": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "goldGhost",
+                                                    "attributes": {
+                                                        "name": "Gold Ghost",
+                                                        "health": 30,
+                                                        "skill": 1,
+                                                        "numAttacks": 1
+                                                    }
+                                                }
+                                            },
+                                            "stool 3": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "goldGhost",
+                                                    "attributes": {
+                                                        "name": "Gold Ghost",
+                                                        "health": 30,
+                                                        "skill": 1,
+                                                        "numAttacks": 1
+                                                    }
+                                                }
+                                            },
+                                            "gas range": {
+                                                "isSearched": false,
+                                                "outcome": null
+                                            },
+                                            "sink": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "purplePuncher",
+                                                    "attributes": {
+                                                        "name": "Purple Puncher",
+                                                        "health": 50,
+                                                        "skill": 2,
+                                                        "numAttacks": 2
+                                                    }
+                                                }
+                                            },
+                                            "refrigerator": {
+                                                "isSearched": false,
+                                                "outcome": null
+                                            },
+                                            "cabinets": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "largeArmor",
+                                                    "attributes": {
+                                                        "name": "Large Armor",
+                                                        "description": "Halves damage from the next 5 ghost attacks.",
+                                                        "itemType": "largeArmor",
+                                                        "magnitude": 3,
+                                                        "durability": 5
+                                                    }
+                                                }
+                                            },
+                                            "large vase": {
+                                                "isSearched": false,
+                                                "outcome": null
+                                            }
+                                        },
+                                        "isCleared": false
+                                    }
+                                },
+                                "Rec Room": {
+                                    "__type__": "room",
+                                    "attributes": {
+                                        "roomName": "Rec Room",
+                                        "floor": 1,
+                                        "darkDescription": "The rec room is dark and unsettling.",
+                                        "litDescription": "The rec room is brightly lit and safe. Looks like a fun place, if it wasn't 500 years old.",
+                                        "interactableObjects": {
+                                            "pool table": {
+                                                "isSearched": false,
+                                                "outcome": null
+                                            },
+                                            "small table": {
+                                                "isSearched": false,
+                                                "outcome": null
+                                            },
+                                            "table stand": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "purplePuncher",
+                                                    "attributes": {
+                                                        "name": "Purple Puncher",
+                                                        "health": 50,
+                                                        "skill": 2,
+                                                        "numAttacks": 2
+                                                    }
+                                                }
+                                            },
+                                            "trash can": {
+                                                "isSearched": false,
+                                                "outcome": null
+                                            },
+                                            "couch": {
+                                                "isSearched": false,
+                                                "outcome": {
+                                                    "__type__": "goldGhost",
+                                                    "attributes": {
+                                                        "name": "Gold Ghost",
+                                                        "health": 30,
+                                                        "skill": 1,
+                                                        "numAttacks": 1
+                                                    }
+                                                }
+                                            },
+                                            "tv console": {
+                                                "isSearched": false,
+                                                "outcome": null
+                                            }
+                                        },
+                                        "isCleared": false
+                                    }
+                                }
+                            },
+                            "numGhosts": 0,
+                            "numItems": 0,
+                            "isCleared": false
+                        }
+                    },
+                    "currentRoomName": "Foyer",
+                    "activeGhost": null,
+                    "activeGhostObjectName": null,
+                    "saveId": 1
+                }
+            }
+        },
+        {
+            "save_id": 2,
+            "save_name": "test",
+            "character": "Luigi",
+            "level": 1,
+            "created_at": "2026-09-17T20:10:54+00:00",
+            "updated_at": "2026-09-17T20:10:54+00:00",
+            "game": {
+                "__type__": "game",
+                "attributes": {
+                    "state": "EXPLORATION",
+                    "isRunning": true,
+                    "player": {
+                        "__type__": "luigi",
+                        "attributes": {
+                            "name": "Luigi",
+                            "_health": 100,
+                            "skill": 1,
+                            "inventory": {
+                                "hearts": {
+                                    "smallHearts": [
+                                        null,
+                                        null,
+                                        null
+                                    ],
+                                    "largeHearts": [
+                                        null,
+                                        null,
+                                        null
+                                    ]
+                                },
+                                "armor": {
+                                    "smallArmor": [
+                                        null,
+                                        null,
+                                        null
+                                    ],
+                                    "largeArmor": [
+                                        null,
+                                        null,
+                                        null
+                                    ]
+                                },
+                                "ghosts": {
+                                    "capturedGhosts": []
+                                }
+                            },
+                            "vacuumBaseDamage": 10,
+                            "vacuumMaxScale": 15
+                        }
+                    },
+                    "currentLevelNumber": 1,
+                    "currentLevel": null,
+                    "currentRoomName": null,
+                    "activeGhost": null,
+                    "activeGhostObjectName": null,
+                    "saveId": 2,
+                    "saveName": "test"
+                }
+            }
+        },
+        {
+            "save_id": 3,
+            "save_name": "luigi",
+            "character": "Luigi",
+            "level": 1,
+            "created_at": "2026-09-17T20:13:37+00:00",
+            "updated_at": "2026-09-17T20:13:37+00:00",
+            "game": {
+                "__type__": "game",
+                "attributes": {
+                    "state": "EXPLORATION",
+                    "isRunning": true,
+                    "player": {
+                        "__type__": "luigi",
+                        "attributes": {
+                            "name": "Luigi",
+                            "_health": 100,
+                            "skill": 1,
+                            "inventory": {
+                                "hearts": {
+                                    "smallHearts": [
+                                        null,
+                                        null,
+                                        null
+                                    ],
+                                    "largeHearts": [
+                                        null,
+                                        null,
+                                        null
+                                    ]
+                                },
+                                "armor": {
+                                    "smallArmor": [
+                                        null,
+                                        null,
+                                        null
+                                    ],
+                                    "largeArmor": [
+                                        null,
+                                        null,
+                                        null
+                                    ]
+                                },
+                                "ghosts": {
+                                    "capturedGhosts": []
+                                }
+                            },
+                            "vacuumBaseDamage": 10,
+                            "vacuumMaxScale": 15
+                        }
+                    },
+                    "currentLevelNumber": 1,
+                    "currentLevel": null,
+                    "currentRoomName": null,
+                    "activeGhost": null,
+                    "activeGhostObjectName": null,
+                    "saveId": 3,
+                    "saveName": "luigi"
+                }
+            }
+        }
+    ]
+}

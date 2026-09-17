@@ -1,11 +1,18 @@
-import item
+from item import item
 
 SMALL_ARMOR_SLOTS = 1
+SMALL_ARMOR_DURABILITY = 3
 
 class smallArmor(item):
     def __init__(self):
-        super().__init__("Small Armor", "Adds 1 armor slot.", "smallArmor", SMALL_ARMOR_SLOTS)
+        super().__init__(
+            "Small Armor",
+            "Halves damage from the next 3 ghost attacks.",
+            "smallArmor",
+            SMALL_ARMOR_SLOTS,
+        )
+        self.durability = SMALL_ARMOR_DURABILITY 
 
     def use(self, player):
-        player.armor = min(player.armor + self.magnitude, player.maxArmorSlots)
-        print(f"Used {self.name}! Armor slots: {player.armor}/{player.maxArmorSlots}")
+        print(f"{self.name} equips automatically and has {self.durability} hits remaining.")
+        return False

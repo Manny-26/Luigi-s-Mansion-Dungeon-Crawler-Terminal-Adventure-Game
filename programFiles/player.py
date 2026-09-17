@@ -1,143 +1,186 @@
-# This is the player class.
-# The player class extends the character class.
-# The player class holds all shared logic between playable characters — 
-# inventory, armor, health property, item usage, and the vacuum attack.
-# Luigi and Mario both extend this class and customize their own stats.
+"""Shared behavior for playable characters."""
 
-import character, random
+import random
+
+from character import character
 
 MAX_HEALTH = 100
 ITEM_ARRAY_SIZE = 3
 
 
 class player(character):
+    """Base class for Luigi, Mario, and future playable characters."""
 
-    def __init__(self, name, health, skill, maxArmorSlots):
+    def __init__(self, name, health, skill):
         super().__init__(name, health, skill)
-        self.maxArmorSlots = maxArmorSlots
-        self.armor = 0
         self.inventory = {
             "hearts": {
                 "smallHearts": [None] * ITEM_ARRAY_SIZE,
-                "largeHearts": [None] * ITEM_ARRAY_SIZE
+                "largeHearts": [None] * ITEM_ARRAY_SIZE,
             },
             "armor": {
                 "smallArmor": [None] * ITEM_ARRAY_SIZE,
-                "largeArmor": [None] * ITEM_ARRAY_SIZE
+                "largeArmor": [None] * ITEM_ARRAY_SIZE,
             },
-            "ghosts": {
-            "capturedGhosts": [None] * ITEM_ARRAY_SIZE   
+            # Captured ghosts are trophies, not consumable inventory slots.
+            "ghosts": {"capturedGhosts": []},
         }
-        }
-
-    # --- Health property ---
-    # Intercepts any assignment to self.health and enforces the 0-100 cap.
-    # Nothing else needs to manually clamp health — it is automatic.
 
     @property
     def health(self):
+        """Return current health."""
         return self._health
 
     @health.setter
     def health(self, value):
-        if value > MAX_HEALTH:
-            self._health = MAX_HEALTH
-        elif value < 0:
-            self._health = 0
-        else:
-            self._health = value
+        """Keep health within the valid 0–100 range on every assignment."""
+        self._health = max(0, min(MAX_HEALTH, value))
 
-    # --- Inventory ---
+    def placeInSlot(self, foundItem):
+        if foundItem.itemType == "capturedGhost":
+            self.inventory["ghosts"]["capturedGhosts"].append(foundItem)
+            print(f"{foundItem.name} was added to the ghost collection.")
+            return True
 
-    def addToInventory(self, item):
-        slotMap = {
-            "smallHeart": self.inventory["hearts"]["smallHearts"],
-            "largeHeart": self.inventory["hearts"]["largeHearts"],
-            "smallArmor": self.inventory["armor"]["smallArmor"],
-            "largeArmor": self.inventory["armor"]["largeArmor"],
-            "capturedGhost": self.inventory["ghosts"]["capturedGhosts"]
+        locations = {
+            "smallHeart": ("hearts", "smallHearts"),
+            "largeHeart": ("hearts", "largeHearts"),
+            "smallArmor": ("armor", "smallArmor"),
+            "largeArmor": ("armor", "largeArmor"),
         }
+        location = locations.get(foundItem.itemType)
+        if location is None:
+            print("Invalid item type.")
+            return False
 
-        if item.itemType not in slotMap:
-            print("Item type not recognized. Item not added to inventory.")
-            return
+        slots = self.inventory[location[0]][location[1]]
+        for index, storedItem in enumerate(slots):
+            if storedItem is None:
+                slots[index] = foundItem
+                return True
 
-        slots = slotMap[item.itemType]
-        for i in range(len(slots)):
-            if slots[i] is None:
-                slots[i] = item
-                print(f"{item.name} added to slot {i + 1}!")
-                return
-        else:
-            print(f"No empty slots available for {item.name}.")
+        print(f"No empty slots available for {foundItem.name}.")
+        return False
+
+    def addToInventory(self, foundItem):
+        return self.placeInSlot(foundItem)
+
+    @staticmethod
+    def normalizeItemName(itemName):
+        return "".join(letter for letter in itemName.lower() if letter.isalnum())
+
+    def findInventoryItem(self, requestedName):
+        normalizedRequest = self.normalizeItemName(requestedName)
+        for categoryName in ("hearts", "armor"):
+            for slots in self.inventory[categoryName].values():
+                for index, storedItem in enumerate(slots):
+                    if storedItem is None:
+                        continue
+                    validNames = {
+                        self.normalizeItemName(storedItem.name),
+                        self.normalizeItemName(storedItem.itemType),
+                        self.normalizeItemName(storedItem.name + "s"),
+                    }
+                    if normalizedRequest in validNames:
+                        return storedItem, slots, index
+        return None
+
+    def useInventoryItem(self, requestedName):
+        entry = self.findInventoryItem(requestedName)
+        if entry is None:
+            print(f"You do not have '{requestedName}' in your inventory.")
+            return False
+
+        inventoryItem, slots, index = entry
+        if inventoryItem.use(self):
+            slots[index] = None
+            return True
+        return False
 
     def getInventory(self):
-        print(f"\n{self.name}'s Inventory:")
-        print("  Hearts:")
-        print(f"    Small Hearts: {self._countSlots('hearts', 'smallHearts')}/{ITEM_ARRAY_SIZE}")
-        print(f"    Large Hearts: {self._countSlots('hearts', 'largeHearts')}/{ITEM_ARRAY_SIZE}")
-        print("  Armor:")
-        print(f"    Small Armor:  {self._countSlots('armor', 'smallArmor')}/{ITEM_ARRAY_SIZE}")
-        print(f"    Large Armor:  {self._countSlots('armor', 'largeArmor')}/{ITEM_ARRAY_SIZE}")
-        print(f"  Active Armor Slots: {self.armor}/{self.maxArmorSlots}\n")
-        print("  Ghosts:")
-        print(f"    Captured: {self._countSlots('ghosts', 'capturedGhosts')}/{ITEM_ARRAY_SIZE}")
+        print(f"\n{self.name}'s Inventory:\n")
+        print("Hearts:")
+        print("  Small Hearts: " + self.describeItemSlots("hearts", "smallHearts"))
+        print("  Large Hearts: " + self.describeItemSlots("hearts", "largeHearts"))
+        print("Armor:")
+        print("  Small Armor: " + self.describeArmorSlots("smallArmor"))
+        print("  Large Armor: " + self.describeArmorSlots("largeArmor"))
+        ghosts = self.inventory["ghosts"]["capturedGhosts"]
+        print(f"Captured Ghosts ({len(ghosts)}):")
+        print("  " + (", ".join(ghost.name for ghost in ghosts) or "None"))
+        print("\nUse an item with 'use [item name]'.\n")
 
-    def _countSlots(self, category, slotType):
-        # Counts occupied slots (not None) for display in getInventory
-        return sum(1 for slot in self.inventory[category][slotType] if slot is not None)
+    def describeItemSlots(self, category, itemType):
+        return str([
+            storedItem.name if storedItem is not None else "Empty"
+            for storedItem in self.inventory[category][itemType]
+        ])
 
-    # --- Using items ---
+    def describeArmorSlots(self, armorType):
+        descriptions = []
+        for armorItem in self.inventory["armor"][armorType]:
+            if armorItem is None:
+                descriptions.append("Empty")
+            else:
+                descriptions.append(
+                    f"{armorItem.name} ({armorItem.durability} hits remaining)"
+                )
+        return str(descriptions)
 
-    def useItem(self):
-        self.getInventory()
-        choice = input(
-            "Choose an item to use:\n"
-            "1) Small Heart\n"
-            "2) Large Heart\n"
-            "3) Small Armor\n"
-            "4) Large Armor\n"
-            "> "
-        )
+    def findActiveArmor(self):
+        defaultDurability = {"smallArmor": 3, "largeArmor": 5}
+        for armorType in ("smallArmor", "largeArmor"):
+            slots = self.inventory["armor"][armorType]
+            for index, armorItem in enumerate(slots):
+                if armorItem is None:
+                    continue
+                if not hasattr(armorItem, "durability"):
+                    armorItem.durability = defaultDurability[armorType]
+                if armorItem.durability < 1:
+                    slots[index] = None
+                    continue
+                return armorItem, slots, index
+        return None
 
-        slotMap = {
-            "1": self.inventory["hearts"]["smallHearts"],
-            "2": self.inventory["hearts"]["largeHearts"],
-            "3": self.inventory["armor"]["smallArmor"],
-            "4": self.inventory["armor"]["largeArmor"]
-        }
+    def getArmorStatus(self):
+        activeArmor = self.findActiveArmor()
+        if activeArmor is None:
+            return "None"
+        return f"{activeArmor[0].name} ({activeArmor[0].durability} hits remaining)"
 
-        if choice not in slotMap:
-            print("Invalid choice. Please try again.")
-            return
-
-        slots = slotMap[choice]
-        for i in range(len(slots)):
-            if slots[i] is not None:
-                item = slots[i]
-                slots[i] = None
-                item.use(self)
-                return
-        else:
-            print("No items of that type in inventory.")
-
-    # --- Combat ---
+    def addHealth(self, amount):
+        previousHealth = self.health
+        self.health += amount
+        return self.health - previousHealth
 
     def takeDamage(self, amount):
-        if self.armor > 0:
-            self.armor -= 1
-            print(f"{self.name}'s armor absorbed the hit! ({self.armor}/{self.maxArmorSlots} slots remaining)")
-        else:
-            self.health -= amount
+        activeArmor = self.findActiveArmor()
+        damage = amount
+        if activeArmor is not None:
+            armorItem, slots, index = activeArmor
+            damage = (amount + 1) // 2
+            armorItem.durability -= 1
+            print(f"{armorItem.name} reduces the incoming damage from {amount} to {damage}.")
+            if armorItem.durability < 1:
+                print(f"{armorItem.name} has broken and was removed from your inventory.")
+                slots[index] = None
+        return super().takeDamage(damage)
+
+    def attack(self, enemy):
+        return self.vacuumAttack(enemy)
 
     def vacuumAttack(self, enemy):
         roll = random.randint(1, 20)
         print(f"{self.name} rolls a {roll}!")
 
         if roll == 1:
-            enemy.health = 0
+            damageDealt = enemy.takeDamage(enemy.health)
             print(f"Perfect catch! {enemy.name} is sucked in instantly!")
-        else:
-            damage = self.vacuumBaseDamage + self.skill * random.randint(1, self.vacuumMaxScale)
-            enemy.takeDamage(damage)
-            print(f"{self.name} attacks {enemy.name} for {damage} damage!")
+            return damageDealt
+
+        damage = self.vacuumBaseDamage + (
+            self.skill * random.randint(1, self.vacuumMaxScale)
+        )
+        damageDealt = enemy.takeDamage(damage)
+        print(f"{self.name} attacks {enemy.name} for {damageDealt} damage!")
+        return damageDealt

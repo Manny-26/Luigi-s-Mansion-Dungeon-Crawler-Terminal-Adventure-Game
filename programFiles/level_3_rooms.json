@@ -1,0 +1,77 @@
+{
+    "levelName": "Third Floor",
+    "numGhosts": 11,
+    "numItems": 6,
+    "rooms": [
+        {
+            "name": "Astral Room",
+            "floor": 3,
+            "darkDescription": "The astral room is dark and unsettling.",
+            "litDescription": "The astral room is brightly lit and safe. So shiny and glowy here. This is a half decent room.",
+            "interactableObjects": {
+                "telescope": {"isSearched": false, "outcome": null},
+                "desk": {"isSearched": false, "outcome": null},
+                "office chair": {"isSearched": false, "outcome": null},
+                "large mirror": {"isSearched": false, "outcome": null},
+                "large mosaic painting": {"isSearched": false, "outcome": null},
+                "small chest": {"isSearched": false, "outcome": null},
+                "large chest": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Fortune Teller Room",
+            "floor": 3,
+            "darkDescription": "The fortune teller room is dark and unsettling.",
+            "litDescription": "The fortune teller room is brightly lit and safe. The crystal ball looks like it will expode with how bright it is. It might as well sear my eyes out",
+            "interactableObjects": {
+                "crystal ball": {"isSearched": false, "outcome": null},
+                "fortune teller chair": {"isSearched": false, "outcome": null},
+                "trash can": {"isSearched": false, "outcome": null},
+                "small chest": {"isSearched": false, "outcome": null},
+                "fancy lamp": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Washroom",
+            "floor": 3,
+            "darkDescription": "The washroom is dark and unsettling.",
+            "litDescription": "The washroom is brightly lit and safe.",
+            "interactableObjects": {
+                "washing machine": {"isSearched": false, "outcome": null},
+                "drying machine": {"isSearched": false, "outcome": null},
+                "utility sink": {"isSearched": false, "outcome": null},
+                "cabinet": {"isSearched": false, "outcome": null},
+                "large chest": {"isSearched": false, "outcome": null},
+                "trash can": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Telephone Room",
+            "floor": 3,
+            "darkDescription": "The telephone room is dark and unsettling.",
+            "litDescription": "The telephone room is brightly lit and safe. No service in the phones though, so that sucks. Sucks to suck I guess.",
+            "interactableObjects": {
+                "classic phone": {"isSearched": false, "outcome": null},
+                "wall phone": {"isSearched": false, "outcome": null},
+                "small table": {"isSearched": false, "outcome": null},
+                "chair": {"isSearched": false, "outcome": null},
+                "standing closet": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Artist Room",
+            "floor": 3,
+            "darkDescription": "The artist room is dark and unsettling.",
+            "litDescription": "The artist room is brightly lit and safe.",
+            "interactableObjects": {
+                "animal portrait": {"isSearched": false, "outcome": null},
+                "landscape mosaic": {"isSearched": false, "outcome": null},
+                "small easel": {"isSearched": false, "outcome": null},
+                "large easel": {"isSearched": false, "outcome": null},
+                "large closet": {"isSearched": false, "outcome": null},
+                "small stool": {"isSearched": false, "outcome": null},
+                "mini fridge": {"isSearched": false, "outcome": null}
+            }
+        }
+    ]
+}

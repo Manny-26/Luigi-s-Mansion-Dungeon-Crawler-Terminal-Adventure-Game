@@ -1,17 +1,22 @@
-# This is the goldGhost class.
+# This is the goldGhost class. 
 # The goldGhost class extends the ghost class.
-# The gold ghost is the simplest enemy in the game. It has 100 health and 1 weak attack.
+# The gold ghost is the simplest enemy in the game. It has low health and only 1 weak attack.
 
 import random
+
 from ghost import ghost
 
 GOLD_GHOST_BASE_DAMAGE = 10
 
 class goldGhost(ghost):
     def __init__(self):
-        super().__init__("Gold Ghost", 100, 1, 1)
+        super().__init__("Gold Ghost", 30, 1, 1)
 
-    def punch(self, player):
-        damage = GOLD_GHOST_BASE_DAMAGE + self.skill * random.randint(1, 3)
-        player.takeDamage(damage)
-        print(f"{self.name} punches {player.name} for {damage} damage!")
+    def attack(self, target):
+        """Attack a target with the Gold Ghost's punch."""
+        return self.punch(target)
+
+    def punch(self, target):
+        damage = GOLD_GHOST_BASE_DAMAGE
+        damageDealt = target.takeDamage(damage)
+        print(f"{self.name} punches {target.name} for {damageDealt} damage!")

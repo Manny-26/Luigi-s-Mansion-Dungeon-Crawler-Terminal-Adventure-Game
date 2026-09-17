@@ -1,0 +1,76 @@
+{
+    "levelName": "Second Floor",
+    "numGhosts": 10,
+    "numItems": 6,
+    "rooms": [
+        {
+            "name": "Guest Bedroom #1",
+            "floor": 2,
+            "darkDescription": "The first guest bedroom is dark and unsettling.",
+            "litDescription": "The first guest bedroom is brightly lit and safe. Someone left their pajamas on the bed...",
+            "interactableObjects": {
+                "bed": {"isSearched": false, "outcome": null},
+                "nightstand 1": {"isSearched": false, "outcome": null},
+                "nightstand 2": {"isSearched": false, "outcome": null},
+                "dresser": {"isSearched": false, "outcome": null},
+                "tv": {"isSearched": false, "outcome": null},
+                "large heart-shaped painting": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Guest Bedroom #2",
+            "floor": 2,
+            "darkDescription": "The second guest bedroom is dark and unsettling.",
+            "litDescription": "The second guest bedroom is brightly lit and safe. Why is there a massive dark stain on the carpet?",
+            "interactableObjects": {
+                "bed": {"isSearched": false, "outcome": null},
+                "nightstand": {"isSearched": false, "outcome": null},
+                "dresser": {"isSearched": false, "outcome": null},
+                "tv": {"isSearched": false, "outcome": null},
+                "desk": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Safari Room",
+            "floor": 2,
+            "darkDescription": "The safari room is dark and unsettling.",
+            "litDescription": "The safari room is brightly lit and safe. Come to think of it, the owner of this mansion is a murderer. Oh wait...",
+            "interactableObjects": {
+                "wall-mounted deer head": {"isSearched": false, "outcome": null},
+                "built-in cabinets": {"isSearched": false, "outcome": null},
+                "small vase": {"isSearched": false, "outcome": null},
+                "wall-mounted animal skins": {"isSearched": false, "outcome": null},
+                "javelins": {"isSearched": false, "outcome": null},
+                "safe": {"isSearched": false, "outcome": null},
+                "bucket hat": {"isSearched": false, "outcome": null},
+                "large table": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Clock Room",
+            "floor": 2,
+            "darkDescription": "The clock room is dark and unsettling.",
+            "litDescription": "The clock room is brightly lit and safe. This room is the embodiment of having way too much money to spend. Jeez.",
+            "interactableObjects": {
+                "small clock": {"isSearched": false, "outcome": null},
+                "grandfather clock": {"isSearched": false, "outcome": null},
+                "red toy soldier": {"isSearched": false, "outcome": null},
+                "green toy soldier": {"isSearched": false, "outcome": null},
+                "blue toy soldier": {"isSearched": false, "outcome": null},
+                "small table": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Sitting Room",
+            "floor": 2,
+            "darkDescription": "The sitting room is dark and unsettling.",
+            "litDescription": "The sitting room is brightly lit and safe.",
+            "interactableObjects": {
+                "small sofa": {"isSearched": false, "outcome": null},
+                "large couch": {"isSearched": false, "outcome": null},
+                "recliner": {"isSearched": false, "outcome": null},
+                "coffee table": {"isSearched": false, "outcome": null}
+            }
+        }
+    ]
+}

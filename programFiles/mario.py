@@ -1,12 +1,18 @@
-# This is the mario class.
-# Mario extends the player class.
-# Mario has 5 armor slots and high base vacuum damage, but low random scaling —
-# he hits reliably hard every time.
+"""Mario player character class.
 
-import player
+Mario currently shares Luigi's player abilities, inventory layout, and base
+statistics.  Keeping him as a subclass means game logic can treat both player
+choices the same while still recording the selected character in save files.
+
+This choice was mainly done to save time. Refactoring Luigi into a more generic "Player" 
+class would have taken longer than just writing this simple subclass. 
+"""
+
+from player import player
+
 
 class mario(player):
     def __init__(self):
-        super().__init__("Mario", 100, 2, maxArmorSlots=5)
+        super().__init__("Mario", 100, 2)
         self.vacuumBaseDamage = 25
-        self.vacuumMaxScale = 3    # damage = 25 + skill * randint(1, 3)
+        self.vacuumMaxScale = 3

@@ -35,3 +35,7 @@ class item:
 
     def setItemType(self, itemType):
         self.itemType = itemType
+
+    def use(self, player):
+        """Apply this item to a player; concrete item classes define the effect."""
+        raise NotImplementedError(f"{type(self).__name__} must implement use().")

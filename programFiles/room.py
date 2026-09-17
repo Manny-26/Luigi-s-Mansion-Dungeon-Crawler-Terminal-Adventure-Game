@@ -9,6 +9,8 @@
 # -- isSearched is a boolean that represents whether the object has been searched by the player.
 # -- outcome is a string that represents the outcome of searching the object. This can be money, a consumable item, or a ghost.
 
+from ghost import ghost
+
 class room:
     def __init__(self, roomName, floor, darkDescriptiion, litDescription, interactableObjects):
 
@@ -66,8 +68,8 @@ class room:
                 "outcome": None
             }
 
-        # If the object has not been searched, mark it as searched
-        # Then check if the room is cleared
+        # If the object has not been searched, mark it as searched.
+        # A living ghost still prevents the room from being cleared.
         objectData["isSearched"] = True
         self.isRoomCleared()
 
@@ -83,18 +85,21 @@ class room:
     # otherwise, the room is not cleared
     def isRoomCleared(self):
 
-        # checks if the room is cleared
-        if (self.isCleared):
-            return True
-
-        # checks if all the objects have been searched
-        # if not, the room is not cleared
+        # Every object must be searched, and every revealed ghost must be
+        # defeated, before the room can be cleared.
         for objectData in self.interactableObjects.values():
-            if objectData["isSearched"] == False:
+            if not objectData["isSearched"]:
+                self.isCleared = False
+                return False
+
+            outcome = objectData.get("outcome")
+            if isinstance(outcome, ghost) and outcome.health > 0:
+                self.isCleared = False
                 return False
 
         # if all the objects have been searched, set the isCleared attribute to True
         self.isCleared = True
+        return True
 
 
 

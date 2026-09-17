@@ -1,0 +1,72 @@
+{
+    "levelName": "First Floor",
+    "numGhosts": 9,
+    "numItems": 5,
+    "rooms": [
+        {
+            "name": "Foyer",
+            "floor": 1,
+            "darkDescription": "The foyer is dark and unsettling.",
+            "litDescription": "The foyer is brightly lit and safe. Looks a bit dated, but also timeless at the same time. Tons of Spiderwebs though...",
+            "interactableObjects": {
+                "mirror": {"isSearched": false, "outcome": null},
+                "table stand": {"isSearched": false, "outcome": null},
+                "wooden chair": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Library",
+            "floor": 1,
+            "darkDescription": "The library is dark and unsettling.",
+            "litDescription": "The library is brightly lit and safe. The bookshelves are on the brink of breaking.",
+            "interactableObjects": {
+                "recliner": {"isSearched": false, "outcome": null},
+                "coffee table": {"isSearched": false, "outcome": null},
+                "desk": {"isSearched": false, "outcome": null},
+                "small bookshelf": {"isSearched": false, "outcome": null},
+                "large bookshelf": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Master Bedroom",
+            "floor": 1,
+            "darkDescription": "The master bedroom is dark and unsettling.",
+            "litDescription": "The master bedroom is brightly lit and safe.",
+            "interactableObjects": {
+                "bed": {"isSearched": false, "outcome": null},
+                "dresser": {"isSearched": false, "outcome": null},
+                "makeup stand": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Kitchen & Dining Room",
+            "floor": 1,
+            "darkDescription": "The kitchen and dining room are dark and unsettling.",
+            "litDescription": "The kitchen and dining room are brightly lit and safe. There is a rotten potato smashed on the ground...And you stepped in it!!!!!",
+            "interactableObjects": {
+                "stool 1": {"isSearched": false, "outcome": null},
+                "stool 2": {"isSearched": false, "outcome": null},
+                "stool 3": {"isSearched": false, "outcome": null},
+                "gas range": {"isSearched": false, "outcome": null},
+                "sink": {"isSearched": false, "outcome": null},
+                "refrigerator": {"isSearched": false, "outcome": null},
+                "cabinets": {"isSearched": false, "outcome": null},
+                "large vase": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Rec Room",
+            "floor": 1,
+            "darkDescription": "The rec room is dark and unsettling.",
+            "litDescription": "The rec room is brightly lit and safe. Looks like a fun place, if it wasn't 500 years old.",
+            "interactableObjects": {
+                "pool table": {"isSearched": false, "outcome": null},
+                "small table": {"isSearched": false, "outcome": null},
+                "table stand": {"isSearched": false, "outcome": null},
+                "trash can": {"isSearched": false, "outcome": null},
+                "couch": {"isSearched": false, "outcome": null},
+                "tv console": {"isSearched": false, "outcome": null}
+            }
+        }
+    ]
+}

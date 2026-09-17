@@ -30,8 +30,13 @@ class character:
         return self.skill
 
     def takeDamage(self, amount):
-        self.health -= amount
-        if self.health < 0:
-            self.health = 0
+        """Remove health without allowing it to fall below zero."""
+        previousHealth = self.health
+        self.health = max(0, self.health - amount)
+        return previousHealth - self.health
 
-
+    def attack(self, target):
+        """Attack a target using the move supplied by a subclass."""
+        raise NotImplementedError(
+            f"{type(self).__name__} must implement the attack() method."
+        )

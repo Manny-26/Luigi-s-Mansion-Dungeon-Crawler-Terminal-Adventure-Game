@@ -1,12 +1,31 @@
+
 # This is the luigi class.
-# Luigi extends the player class.
-# Luigi has 3 armor slots, low base vacuum damage, but high random scaling —
-# he can hit very hard but is inconsistent.
+# The luigi class extends the character class
+# The luigi class adds an inventory to the character class that allows luigi to obtain/store items.
+# The inventory is a dictionary that contains two dictionaries: one for hearts and one for armor.
 
-import player
+from player import player
 
+
+
+# This class represents the main character in the game.
+# This class extends the character class.
+# This class adds an inventory that Luigi can use to obtain/store items.
+# This class also adds an armor attribute that allows luigi to shield themselves from damage.
 class luigi(player):
+    
     def __init__(self):
-        super().__init__("Luigi", 100, 1, maxArmorSlots=3)
+        super().__init__("Luigi", 100, 1)
         self.vacuumBaseDamage = 10
-        self.vacuumMaxScale = 15   # damage = 10 + skill * randint(1, 10)
+        self.vacuumMaxScale = 15
+
+    
+
+    
+    
+    
+
+
+
+
+    

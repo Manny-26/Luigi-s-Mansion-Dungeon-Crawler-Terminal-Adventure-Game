@@ -1,0 +1,100 @@
+{
+    "levelName": "Basement",
+    "numGhosts": 16,
+    "numItems": 9,
+    "rooms": [
+        {
+            "name": "Utility Room",
+            "floor": 4,
+            "darkDescription": "The utility room is dark and unsettling.",
+            "litDescription": "The utility room is brightly lit and safe.",
+            "interactableObjects": {
+                "generator": {"isSearched": false, "outcome": null},
+                "large table": {"isSearched": false, "outcome": null},
+                "barrels": {"isSearched": false, "outcome": null},
+                "water heater": {"isSearched": false, "outcome": null},
+                "large battery": {"isSearched": false, "outcome": null},
+                "closet": {"isSearched": false, "outcome": null},
+                "chair": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Pipe Room",
+            "floor": 4,
+            "darkDescription": "The pipe room is dark and unsettling.",
+            "litDescription": "The pipe room is brightly lit and safe. Why does this look like a narcotics lab?",
+            "interactableObjects": {
+                "large metal pipe": {"isSearched": false, "outcome": null},
+                "small metal pipe": {"isSearched": false, "outcome": null},
+                "chemical barrel": {"isSearched": false, "outcome": null},
+                "utility sink": {"isSearched": false, "outcome": null},
+                "empty glass bottle": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Cold Storage",
+            "floor": 4,
+            "darkDescription": "The cold storage room is dark and unsettling.",
+            "litDescription": "The cold storage room is brightly lit and safe. This would be a nice place for storing things...",
+            "interactableObjects": {
+                "large refrigerator": {"isSearched": false, "outcome": null},
+                "larger refrigerator": {"isSearched": false, "outcome": null},
+                "smaller refrigerator": {"isSearched": false, "outcome": null},
+                "ice chest": {"isSearched": false, "outcome": null},
+                "small cabinet": {"isSearched": false, "outcome": null},
+                "large cabinet": {"isSearched": false, "outcome": null},
+                "large cardboard box": {"isSearched": false, "outcome": null},
+                "extra large cardboard box": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Storage Room",
+            "floor": 4,
+            "darkDescription": "The storage room is dark and unsettling.",
+            "litDescription": "The storage room is brightly lit and safe. Nothing really to see here other than a million spiderwebs... and some spiders....",
+            "interactableObjects": {
+                "large table": {"isSearched": false, "outcome": null},
+                "cabinets": {"isSearched": false, "outcome": null},
+                "wooden chair": {"isSearched": false, "outcome": null},
+                "steel chair": {"isSearched": false, "outcome": null},
+                "utility rack": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Incinerator Room",
+            "floor": 4,
+            "darkDescription": "The incinerator room is dark and unsettling.",
+            "litDescription": "The incinerator room is brightly lit and safe. I mean, it better be with all of the fire in this room.",
+            "interactableObjects": {
+                "large fireplace 1": {"isSearched": false, "outcome": null},
+                "large fireplace 2": {"isSearched": false, "outcome": null},
+                "large fireplace 3": {"isSearched": false, "outcome": null},
+                "large fireplace 4": {"isSearched": false, "outcome": null},
+                "large fireplace 5": {"isSearched": false, "outcome": null},
+                "large cabinet 1": {"isSearched": false, "outcome": null},
+                "large cabinet 2": {"isSearched": false, "outcome": null},
+                "large cabinet 3": {"isSearched": false, "outcome": null},
+                "large cabinet 4": {"isSearched": false, "outcome": null},
+                "large cabinet 5": {"isSearched": false, "outcome": null},
+                "carbon fiber chair": {"isSearched": false, "outcome": null},
+                "carbon fiber desk": {"isSearched": false, "outcome": null},
+                "carbon fiber vase": {"isSearched": false, "outcome": null},
+                "industrial crusher": {"isSearched": false, "outcome": null},
+                "trash can": {"isSearched": false, "outcome": null}
+            }
+        },
+        {
+            "name": "Server Room",
+            "floor": 4,
+            "darkDescription": "The server room is dark and unsettling.",
+            "litDescription": "The server room is brightly lit and safe. For how terrible and old this mansion is, whoever owns this has taste. Oh wait........",
+            "interactableObjects": {
+                "computer server tower #1": {"isSearched": false, "outcome": null},
+                "computer server tower #2": {"isSearched": false, "outcome": null},
+                "large closet": {"isSearched": false, "outcome": null},
+                "small desk": {"isSearched": false, "outcome": null},
+                "electrical panel": {"isSearched": false, "outcome": null}
+            }
+        }
+    ]
+}

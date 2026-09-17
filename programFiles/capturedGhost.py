@@ -1,13 +1,15 @@
-import item
+from item import item
+
 
 class capturedGhost(item):
     def __init__(self, ghostName, ghostSkill):
         super().__init__(
-            name=f"Captured {ghostName}",
-            description=f"A captured {ghostName}. Use it to open the exit door.",
-            itemType="capturedGhost",
-            magnitude=ghostSkill
+            f"Captured {ghostName}",
+            f"The captured spirit of a {ghostName}.",
+            "capturedGhost",
+            ghostSkill,
         )
 
     def use(self, player):
-        print(f"{self.name} is needed to open the exit door!")
+        print(f"{self.name} is part of your permanent ghost collection.")
+        return False
