@@ -128,6 +128,12 @@ class game:
         elif verb == "inspect":
             if not noun:
                 print("\nSpecify an object.\n")
+                return
+
+            # Inventory items take precedence over room objects with the same
+            # name so "inspect [item]" consistently shows the item details.
+            if self.player.inspectInventoryItem(noun) is not None:
+                return
                 
             # Call the inspectObject method from the room class
             result = currentRoom.inspectObject(noun)

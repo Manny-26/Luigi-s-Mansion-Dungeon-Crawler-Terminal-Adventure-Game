@@ -69,7 +69,7 @@ class player(character):
     def normalizeItemName(itemName):
         return "".join(letter for letter in itemName.lower() if letter.isalnum())
 
-    def findInventoryItem(self, requestedName):
+    def findInventoryItem(self, requestedName, includeGhosts=False):
         normalizedRequest = self.normalizeItemName(requestedName)
         for categoryName in ("hearts", "armor"):
             for slots in self.inventory[categoryName].values():
@@ -83,7 +83,28 @@ class player(character):
                     }
                     if normalizedRequest in validNames:
                         return storedItem, slots, index
+
+        if includeGhosts:
+            for storedItem in self.inventory["ghosts"]["capturedGhosts"]:
+                validNames = {
+                    self.normalizeItemName(storedItem.name),
+                    self.normalizeItemName(storedItem.itemType),
+                    self.normalizeItemName(storedItem.name + "s"),
+                }
+                if normalizedRequest in validNames:
+                    return storedItem, None, None
+
         return None
+
+    def inspectInventoryItem(self, requestedName):
+        """Print and return the description of an item in the inventory."""
+        entry = self.findInventoryItem(requestedName, includeGhosts=True)
+        if entry is None:
+            return None
+
+        inventoryItem = entry[0]
+        print(f"\n{inventoryItem.name}: {inventoryItem.description}\n")
+        return inventoryItem
 
     def useInventoryItem(self, requestedName):
         entry = self.findInventoryItem(requestedName)
