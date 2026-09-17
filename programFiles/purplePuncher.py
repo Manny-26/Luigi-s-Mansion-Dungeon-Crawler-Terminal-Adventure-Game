@@ -1,16 +1,23 @@
 # This is the purplePuncher class.
 # The purplePuncher class extends the ghost class.
-# The purplePuncher is stronger than the goldGhost as it has two attacks: softPunch and hardPunch.
-# softPunch is a weaker attack that does less damage than hardPunch (but more than the goldGhost's attack).
-# hardPunch is a stronger attack that does more damage than softPunch.
+# The purplePuncher is stronger than the goldGhost — it has two attacks: softPunch and hardPunch.
+# It picks between them randomly each turn using its generic punch() method.
 
-import ghost, random
+import random
+from ghost import ghost
 
 PURPLE_PUNCHER_BASE_DAMAGE = 15
 
 class purplePuncher(ghost):
     def __init__(self):
-        super().__init__("Purple Puncher", 50, 2, 2)
+        super().__init__("Purple Puncher", 100, 2, 2)
+
+    def punch(self, player):
+        # randomly pick between soft and hard punch each turn
+        if random.randint(1, 2) == 1:
+            self.softPunch(player)
+        else:
+            self.hardPunch(player)
 
     def softPunch(self, player):
         damage = PURPLE_PUNCHER_BASE_DAMAGE + self.skill * random.randint(1, 3)

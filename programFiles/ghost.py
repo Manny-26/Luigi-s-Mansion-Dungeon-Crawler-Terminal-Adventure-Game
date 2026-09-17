@@ -10,7 +10,5 @@ class ghost(character):
         super().__init__(name, health, skill)
         self.numAttacks = numAttacks
 
-        def toItem(self):
-            return capturedGhost(self.name, self.skill)
-
-
+    def toItem(self):
+        return capturedGhost(self.name, self.skill)
