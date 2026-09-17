@@ -1,4 +1,5 @@
-"""Shared behavior for playable characters."""
+"""Shared behavior for playable characters.
+##"""
 
 import random
 
