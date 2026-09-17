@@ -453,6 +453,67 @@
                     "saveName": "luigi"
                 }
             }
+        },
+        {
+            "save_id": 4,
+            "save_name": "test 2",
+            "character": "Luigi",
+            "level": 1,
+            "created_at": "2026-09-17T22:41:11+00:00",
+            "updated_at": "2026-09-17T22:41:11+00:00",
+            "game": {
+                "__type__": "game",
+                "attributes": {
+                    "state": "EXPLORATION",
+                    "isRunning": true,
+                    "player": {
+                        "__type__": "luigi",
+                        "attributes": {
+                            "name": "Luigi",
+                            "_health": 100,
+                            "skill": 1,
+                            "inventory": {
+                                "hearts": {
+                                    "smallHearts": [
+                                        null,
+                                        null,
+                                        null
+                                    ],
+                                    "largeHearts": [
+                                        null,
+                                        null,
+                                        null
+                                    ]
+                                },
+                                "armor": {
+                                    "smallArmor": [
+                                        null,
+                                        null,
+                                        null
+                                    ],
+                                    "largeArmor": [
+                                        null,
+                                        null,
+                                        null
+                                    ]
+                                },
+                                "ghosts": {
+                                    "capturedGhosts": []
+                                }
+                            },
+                            "vacuumBaseDamage": 10,
+                            "vacuumMaxScale": 15
+                        }
+                    },
+                    "currentLevelNumber": 1,
+                    "currentLevel": null,
+                    "currentRoomName": null,
+                    "activeGhost": null,
+                    "activeGhostObjectName": null,
+                    "saveId": 4,
+                    "saveName": "test 2"
+                }
+            }
         }
     ]
 }

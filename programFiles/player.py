@@ -170,7 +170,7 @@ class player(character):
         return self.vacuumAttack(enemy)
 
     def vacuumAttack(self, enemy):
-        roll = random.randint(1, 20)
+        roll = 1 #random.randint(1, 20)
         print(f"{self.name} rolls a {roll}!")
 
         if roll == 1:
